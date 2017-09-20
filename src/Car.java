@@ -9,16 +9,19 @@ public class Car {
 	private String color;
 	private int speed;
 	private int maxSpeed;
+	private int minSpeed;
 	
 	/**
 	 * Creates a new car instance
 	 * @param color
 	 * @param maxSpeed
+	 * @param minSpeed 
 	 */
-	public Car(String color, int maxSpeed){
+	public Car(String color, int maxSpeed, int minSpeed){
 		// using this. prefix to avoid shadowing local params.
 		this.color = color;
 		this.maxSpeed = maxSpeed;
+		this.minSpeed = minSpeed;
 		this.speed = 0;
 	}
 	
@@ -43,6 +46,22 @@ public class Car {
 			speed+= amount;
 		}
 	}
+	
+	
+	/**
+	 * Deaccelerates the car to the minimum amount
+	 * @param amount The amount the car will deaccelerate
+	 * 
+	 */
+	public void deaccelerate(int amount){
+		int limit = maxSpeed - minSpeed;
+		if(amount <= limit){
+			speed = limit;
+		}else{
+			speed -= amount;
+		}
+	}
+	
 	
 	/**
 	 * Displays the object as a string in the format
